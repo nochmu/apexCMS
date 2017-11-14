@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.noctaru</groupId>
+	<artifactId>apexcms</artifactId>
+	<version>1.0.0</version>
+	<name>CMS with APEX</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>12.2.0.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/utPLSQL-cli/lib/ojdbc8-12.2.0.1.jar</systemPath>
+		</dependency>
+	</dependencies>
+	 
+	<properties>
+		<db.host>oradev</db.host>
+		<db.port>1521</db.port>
+		<db.service>dev.loc</db.service>
+		<db.user.test>TEST</db.user.test>
+		<db.pw.test>test</db.pw.test>
+		
+	 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <utplsql.cli>${basedir}/lib/utPLSQL-cli/bin/utplsql</utplsql.cli>
+        <utplsql.url>TEST/test@//${db.host}/${db.service}</utplsql.url>
+        <utplsql.out>${project.build.directory}/utplsql</utplsql.out>
+    </properties>
+
+ 
+	<build> 
+		<plugins>
+			
+
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.5.3</version>
+				<configuration>
+					<changeLogFile>src/main/sql/changelog.xml</changeLogFile>
+					<driver>oracle.jdbc.driver.OracleDriver</driver>
+					<url>jdbc:oracle:thin:@${db.host}:${db.port}/${db.service</url>
+					<username>${db.user.test}</username>
+					<password>${db.pw.test}</password>
+					<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+					<dropFirst>true</dropFirst>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>update</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>utplsql-mkdir</id>
+						<phase>process-test-classes</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<longModulepath>false</longModulepath>
+							<executable>mkdir</executable>
+							<workingDirectory>${project.build.directory}</workingDirectory>
+							<arguments>
+								<argument>-p</argument>
+								<argument>${project.build.directory}/surefire-reports</argument>
+								<argument>${utplsql.out}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+							
+					<execution>
+						<id>utplsql-run</id>
+						<phase>test</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${utplsql.cli}</executable>
+							<workingDirectory>${project.build.directory}</workingDirectory>
+							<arguments>
+								<argument>run</argument>
+								<argument>${utplsql.url}</argument>
+								
+								<argument>-f=ut_documentation_reporter</argument>
+								<argument>-s</argument>
+								
+								<argument>-f=ut_xunit_reporter</argument> 
+								<argument>-o=${project.build.directory}/surefire-reports/utplsql.xml</argument>
+								
+								<argument>-f=ut_documentation_reporter</argument>
+								<argument>-o=${utplsql.out}/documentation.txt</argument>
+								
+								<argument>-f=ut_xunit_reporter</argument>
+								<argument>-o=${utplsql.out}/xunit.xml</argument>
+								
+								<argument>-f=ut_teamcity_reporter</argument>
+								<argument>-o=${utplsql.out}/teamcity.log</argument>
+								
+								<argument>-f=ut_coverage_html_reporter</argument>
+								<argument>-o=${utplsql.out}/coverage.html</argument>
+								
+								<argument>-f=ut_coveralls_reporter</argument>
+								<argument>-o=${utplsql.out}/coveralls.json</argument>
+								
+								<argument>-f=ut_coverage_sonar_reporter</argument>
+								<argument>-o=${utplsql.out}/sonar.coverage.json</argument>
+								
+								<argument>-f=ut_sonar_test_reporter</argument>
+								<argument>-o=${utplsql.out}/sonar.test.json</argument>
+								
+								<argument>--failure-exit-code=1</argument>
+							</arguments>
+
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
