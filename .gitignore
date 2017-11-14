@@ -1,0 +1,5 @@
+/target/
+/.dbeaver-data-sources.xml
+/.classpath
+/.project
+/.settings
