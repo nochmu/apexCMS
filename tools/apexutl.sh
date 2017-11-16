@@ -17,21 +17,21 @@ DB_TEST_USER=DEMO
 DB_TEST_PW=demo
 DB_TEST="${DB_HOST}:${DB_PORT}/${DB_TEST_SERVICE}"
 
-
-
-
-echo "Export Workspace"
 WS_ID=2288666055166000
-$java oracle.apex.APEXExport \
-		-db $DB_DEV			\
-		-expWorkspace 		\
-		-workspaceid ${WS_ID}  \
-		-user ${DB_DEV_USER} \
-		-password ${DB_DEV_PW} 
+APP_ID=500
+APP_FILE="f${APP_ID}.sql"
+WS_FILE="w${WS_ID}.sql"
+
+#echo "Export Workspace"
+#$java oracle.apex.APEXExport \
+#		-db $DB_DEV			\
+#		-expWorkspace 		\
+#		-workspaceid ${WS_ID}  \
+#		-user ${DB_DEV_USER} \
+#		-password ${DB_DEV_PW} 
 
 
 echo "Export Application "
-APP_ID=500
 $java oracle.apex.APEXExport \
 		-db $DB_DEV			\
 		-applicationid ${APP_ID}  \
@@ -39,19 +39,19 @@ $java oracle.apex.APEXExport \
 		-user ${DB_DEV_USER} \
 		-password ${DB_DEV_PW} 
 		
-$java oracle.apex.APEXExportSplitter f500.sql -update
+		
+$java oracle.apex.APEXExportSplitter ${APP_FILE} -update
  
 
-sqlplus=/usr/lib/oracle/12.2/client64/bin/sqlplus
+sqlplus=/usr/lib/oracle/12.2/client64/bin/sqlplus 
 
 echo "Import Workspace into DB_TEST"
-WS_FILE="w${WS_ID}"
-#echo exit | $sqlplus -S -L $DB_TEST_USER/$DB_TEST_PW@$DB_TEST @${WS_FILE}
+echo "sqlplus -S -L $DB_TEST_USER/$DB_TEST_PW@$DB_TEST @${WS_FILE}"
 
 
 echo "Import APP into DB_TEST"
-APP_FILE="f${APP_ID}.sql"
-echo exit | $sqlplus -S -L  $DB_TEST_USER/$DB_TEST_PW@$DB_TEST @${APP_FILE}
+echo "sqlplus -S -L  $DB_TEST_USER/$DB_TEST_PW@$DB_TEST @${APP_FILE}"
+
 		
 		
 		
