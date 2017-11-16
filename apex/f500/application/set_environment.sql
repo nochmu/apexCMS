@@ -25,7 +25,7 @@ prompt APPLICATION 500 - Demo App
 --       Breadcrumbs:            1
 --         Entries:              1
 --     Security:
---       Authentication:         1
+--       Authentication:         2
 --     User Interface:
 --       Themes:                 1
 --       Templates:

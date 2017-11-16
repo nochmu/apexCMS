@@ -8,5 +8,12 @@ wwv_flow_api.create_authentication(
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
 );
+wwv_flow_api.create_authentication(
+ p_id=>wwv_flow_api.id(2348696802620224)
+,p_name=>'NO_AUTH'
+,p_scheme_type=>'NATIVE_DAD'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+);
 end;
 /

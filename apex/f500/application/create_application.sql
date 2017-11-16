@@ -16,7 +16,7 @@ wwv_flow_api.create_flow(
 ,p_direction_right_to_left=>'N'
 ,p_flow_image_prefix => nvl(wwv_flow_application_install.get_image_prefix,'')
 ,p_authentication=>'PLUGIN'
-,p_authentication_id=>wwv_flow_api.id(2343047484208603)
+,p_authentication_id=>wwv_flow_api.id(2348696802620224)
 ,p_application_tab_set=>0
 ,p_logo_image=>'TEXT:Demo App'
 ,p_public_user=>'APEX_PUBLIC_USER'
@@ -29,7 +29,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'Y'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'CMU'
-,p_last_upd_yyyymmddhh24miss=>'20171113155300'
+,p_last_upd_yyyymmddhh24miss=>'20171113155636'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
