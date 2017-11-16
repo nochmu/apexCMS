@@ -13,7 +13,7 @@ prompt APPLICATION 500 - Demo App
 --
 
 -- Application Statistics:
---   Pages:                      2
+--   Pages:                      3
 --     Items:                    2
 --     Processes:                4
 --     Regions:                  3

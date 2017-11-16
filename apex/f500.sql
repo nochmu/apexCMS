@@ -35,7 +35,7 @@ prompt APPLICATION 500 - Demo App
 --
 
 -- Application Statistics:
---   Pages:                      2
+--   Pages:                      3
 --     Items:                    2
 --     Processes:                4
 --     Regions:                  3
@@ -95,16 +95,17 @@ wwv_flow_api.create_flow(
 ,p_authentication_id=>wwv_flow_api.id(2343047484208603)
 ,p_application_tab_set=>0
 ,p_logo_image=>'TEXT:Demo App'
+,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=> nvl(wwv_flow_application_install.get_proxy,'')
 ,p_flow_version=>'release 1.0'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_exact_substitutions_only=>'Y'
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
-,p_rejoin_existing_sessions=>'N'
+,p_rejoin_existing_sessions=>'Y'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'CMU'
-,p_last_upd_yyyymmddhh24miss=>'20171113153645'
+,p_last_upd_yyyymmddhh24miss=>'20171113155300'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -8720,6 +8721,7 @@ wwv_flow_api.create_user_interface(
 ,p_home_url=>'f?p=&APP_ID.:1:&SESSION.'
 ,p_login_url=>'f?p=&APP_ID.:LOGIN_DESKTOP:&SESSION.'
 ,p_theme_style_by_user_pref=>false
+,p_global_page_id=>0
 ,p_navigation_list_id=>wwv_flow_api.id(2290621610208509)
 ,p_navigation_list_position=>'SIDE'
 ,p_navigation_list_template_id=>wwv_flow_api.id(2329408028208574)
@@ -8734,6 +8736,42 @@ end;
 prompt --application/user_interfaces/combined_files
 begin
 null;
+end;
+/
+prompt --application/pages/page_00000
+begin
+wwv_flow_api.create_page(
+ p_id=>0
+,p_user_interface_id=>wwv_flow_api.id(2342805272208595)
+,p_name=>'Global Page - Desktop'
+,p_page_mode=>'NORMAL'
+,p_step_title=>'Global Page - Desktop'
+,p_step_sub_title_type=>'TEXT_WITH_SUBSTITUTIONS'
+,p_first_item=>'NO_FIRST_ITEM'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_dialog_chained=>'Y'
+,p_overwrite_navigation_list=>'N'
+,p_page_is_public_y_n=>'N'
+,p_protection_level=>'D'
+,p_cache_mode=>'NOCACHE'
+,p_last_updated_by=>'CMU'
+,p_last_upd_yyyymmddhh24miss=>'20171113155210'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(2081705096992140)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(2309268576208563)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_api.id(2344141647208612)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_api.id(2332554436208578)
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
 end;
 /
 prompt --application/pages/page_00001
@@ -8754,7 +8792,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'CMU'
-,p_last_upd_yyyymmddhh24miss=>'20171113153645'
+,p_last_upd_yyyymmddhh24miss=>'20171113155232'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(2081624144992139)
@@ -8768,20 +8806,6 @@ wwv_flow_api.create_page_plug(
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
-);
-wwv_flow_api.create_page_plug(
- p_id=>wwv_flow_api.id(2344630768208621)
-,p_plug_name=>'Breadcrumbs'
-,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
-,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_api.id(2313654337208564)
-,p_plug_display_sequence=>10
-,p_include_in_reg_disp_sel_yn=>'N'
-,p_plug_display_point=>'REGION_POSITION_01'
-,p_menu_id=>wwv_flow_api.id(2344141647208612)
-,p_plug_source_type=>'NATIVE_BREADCRUMB'
-,p_menu_template_id=>wwv_flow_api.id(2332554436208578)
-,p_plug_query_row_template=>1
 );
 end;
 /

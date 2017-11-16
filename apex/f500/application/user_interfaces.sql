@@ -11,6 +11,7 @@ wwv_flow_api.create_user_interface(
 ,p_home_url=>'f?p=&APP_ID.:1:&SESSION.'
 ,p_login_url=>'f?p=&APP_ID.:LOGIN_DESKTOP:&SESSION.'
 ,p_theme_style_by_user_pref=>false
+,p_global_page_id=>0
 ,p_navigation_list_id=>wwv_flow_api.id(2290621610208509)
 ,p_navigation_list_position=>'SIDE'
 ,p_navigation_list_template_id=>wwv_flow_api.id(2329408028208574)

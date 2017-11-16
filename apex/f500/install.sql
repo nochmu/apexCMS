@@ -41,6 +41,7 @@
 @application/ui_types.sql
 @application/user_interfaces.sql
 @application/user_interfaces/combined_files.sql
+@application/pages/page_00000.sql
 @application/pages/page_00001.sql
 @application/pages/page_00101.sql
 @application/end_environment.sql
