@@ -35,8 +35,9 @@ APP_ID=500
 $java oracle.apex.APEXExport \
 		-db $DB_DEV			\
 		-applicationid ${APP_ID}  \
+		-skipExportDate \
 		-user ${DB_DEV_USER} \
-		-password ${DB_DEV_PW}
+		-password ${DB_DEV_PW} 
 		
 $java oracle.apex.APEXExportSplitter f500.sql -update
  

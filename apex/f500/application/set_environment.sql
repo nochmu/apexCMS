@@ -5,7 +5,6 @@ prompt APPLICATION 500 - Demo App
 -- Application Export:
 --   Application:     500
 --   Name:            Demo App
---   Date and Time:   15:29 Monday November 13, 2017
 --   Exported By:     DEMO
 --   Flashback:       0
 --   Export Type:     Application Export

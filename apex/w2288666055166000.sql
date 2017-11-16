@@ -20,7 +20,7 @@ end;
 prompt  WORKSPACE 2288666055166000
 --
 -- Workspace, User Group, User, and Team Development Export:
---   Date and Time:   15:29 Monday November 13, 2017
+--   Date and Time:   15:35 Monday November 13, 2017
 --   Exported By:     DEMO
 --   Export Type:     Workspace Export
 --   Version:         5.1.3.00.05
@@ -276,13 +276,13 @@ end;
 prompt  SCHEMA DEMO - User Interface Defaults, Table Defaults
 --
 -- Import using sqlplus as the Oracle user: APEX_050100
--- Exported 15:29 Monday November 13, 2017 by: 
+-- Exported 15:35 Monday November 13, 2017 by: 
 --
  
 --------------------------------------------------------------------
 prompt User Interface Defaults, Attribute Dictionary
 --
--- Exported 15:29 Monday November 13, 2017 by: 
+-- Exported 15:35 Monday November 13, 2017 by: 
 --
 -- SHOW EXPORTING WORKSPACE
  

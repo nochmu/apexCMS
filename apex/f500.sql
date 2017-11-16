@@ -27,7 +27,6 @@ prompt APPLICATION 500 - Demo App
 -- Application Export:
 --   Application:     500
 --   Name:            Demo App
---   Date and Time:   15:29 Monday November 13, 2017
 --   Exported By:     DEMO
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -105,7 +104,7 @@ wwv_flow_api.create_flow(
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'Y'
 ,p_last_updated_by=>'CMU'
-,p_last_upd_yyyymmddhh24miss=>'20171113152139'
+,p_last_upd_yyyymmddhh24miss=>'20171113153324'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_ui_type_name => null
 );
@@ -8755,7 +8754,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'CMU'
-,p_last_upd_yyyymmddhh24miss=>'20171113152139'
+,p_last_upd_yyyymmddhh24miss=>'20171113153324'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(2081624144992139)
@@ -8765,7 +8764,7 @@ wwv_flow_api.create_page_plug(
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'BODY'
-,p_plug_source=>'Hallo'
+,p_plug_source=>'Buhja!'
 ,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
