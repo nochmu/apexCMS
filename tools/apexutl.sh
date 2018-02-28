@@ -45,8 +45,8 @@ $java oracle.apex.APEXExportSplitter ${APP_FILE} -update
 
 sqlplus=/usr/lib/oracle/12.2/client64/bin/sqlplus 
 
-echo "Import Workspace into DB_TEST"
-echo "sqlplus -S -L $DB_TEST_USER/$DB_TEST_PW@$DB_TEST @${WS_FILE}"
+#echo "Import Workspace into DB_TEST"
+#echo "sqlplus -S -L $DB_TEST_USER/$DB_TEST_PW@$DB_TEST @${WS_FILE}"
 
 
 echo "Import APP into DB_TEST"
